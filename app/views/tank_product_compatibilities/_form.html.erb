@@ -1,0 +1,41 @@
+<%= form_for @tank_product_compatibility, :html => { :class => "form-horizontal tank_product_compatibility" } do |f| %>
+
+  <% if @tank_product_compatibility.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@tank_product_compatibility.errors.count, "error") %> prohibited this tank_product_compatibility from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @tank_product_compatibility.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :tank_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :tank_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:tank_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :product_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :product_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:product_id) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                tank_product_compatibilities_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>
